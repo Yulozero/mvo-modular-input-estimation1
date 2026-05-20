@@ -1,0 +1,66 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Raw and processed market data
+# The empirical data are not committed because some sources may be licensed
+# or downloaded under third-party terms. See data/README.md.
+data/**
+!data/
+!data/README.md
+
+# Experiment outputs and intermediate artifacts
+outputs*/
+exp2/
+archive/
+outputs_archive/
+paper_workspace/
+_annot_preview/
+
+# Manuscript drafts, private review materials, and local literature notes
+paper_mvo_input_revival/
+*.tex
+*.bib
+*.docx
+*.pptx
+SCI*
+*experiment_design*.html
+paper_current_review.txt
+paper_review_extract.txt
+main0517_pages3_7.txt
+garch_ppt_extracted.txt
+distance_formula_proof.txt
+
+# Large generated figures and temporary review artifacts
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.html
+*.txt
+!README.md
+
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc

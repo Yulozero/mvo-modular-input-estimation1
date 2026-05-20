@@ -1,0 +1,346 @@
+suite_name: "design_first_full_suite"
+base: "configs/experiment_design/base_design.yaml"
+output:
+  root_dir: "outputs_experiment_design"
+
+experiments:
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+
+  - preset: "configs/experiment_design/presets/design_baseline_equal_weight.yaml"
+  - preset: "configs/experiment_design/presets/design_baseline_min_variance.yaml"
+  - preset: "configs/experiment_design/presets/design_baseline_inverse_volatility.yaml"
+  - preset: "configs/experiment_design/presets/design_baseline_risk_parity.yaml"
+  - preset: "configs/experiment_design/presets/design_baseline_traditional_mvo.yaml"
+  - preset: "configs/experiment_design/presets/design_baseline_shrinkage_mvo.yaml"
+
+  - preset: "configs/experiment_design/presets/design_mean_hist_mean.yaml"
+  - preset: "configs/experiment_design/presets/design_mean_ewma_mean.yaml"
+  - preset: "configs/experiment_design/presets/design_mean_lstm_mean.yaml"
+  - preset: "configs/experiment_design/presets/design_mean_attention_mean.yaml"
+  - preset: "configs/experiment_design/presets/design_mean_transformer_mean.yaml"
+
+  - preset: "configs/experiment_design/presets/design_vol_rolling_std.yaml"
+  - preset: "configs/experiment_design/presets/design_vol_ewma_vol.yaml"
+  - preset: "configs/experiment_design/presets/design_vol_garch.yaml"
+  - preset: "configs/experiment_design/presets/design_vol_garch_lstm.yaml"
+  - preset: "configs/experiment_design/presets/design_vol_filter_lstm.yaml"
+  - preset: "configs/experiment_design/presets/design_vol_dwt_lstm.yaml"
+
+  - preset: "configs/experiment_design/presets/design_corr_pearson.yaml"
+  - preset: "configs/experiment_design/presets/design_corr_spearman.yaml"
+  - preset: "configs/experiment_design/presets/design_corr_kendall.yaml"
+  - preset: "configs/experiment_design/presets/design_corr_distance_corr.yaml"
+  - preset: "configs/experiment_design/presets/design_corr_signed_distance_corr.yaml"
+
+  - preset: "configs/experiment_design/presets/design_ablation_baseline.yaml"
+  - preset: "configs/experiment_design/presets/design_ablation_best_mean_only.yaml"
+  - preset: "configs/experiment_design/presets/design_ablation_best_vol_only.yaml"
+  - preset: "configs/experiment_design/presets/design_ablation_nonlinear_corr_only.yaml"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_ablation_full_model"
+      experiment:
+        group: "Ablation"
+        variant: "Full Model"
+        paper_tag: "design_ablation_full_model"
+
+  - preset: "configs/experiment_design/presets/design_dwt_special_default.yaml"
+  - preset: "configs/experiment_design/presets/design_dwt_special_default.yaml"
+    override:
+      output:
+        experiment_name: "design_dwt_special_wavelet_haar"
+      vol_model:
+        wavelet: "haar"
+        level: 3
+      experiment:
+        group: "DWT Special"
+        variant: "Wavelet = Haar"
+        paper_tag: "design_dwt_special_wavelet_haar"
+  - preset: "configs/experiment_design/presets/design_dwt_special_default.yaml"
+    override:
+      output:
+        experiment_name: "design_dwt_special_wavelet_sym4"
+      vol_model:
+        wavelet: "sym4"
+        level: 3
+      experiment:
+        group: "DWT Special"
+        variant: "Wavelet = sym4"
+        paper_tag: "design_dwt_special_wavelet_sym4"
+  - preset: "configs/experiment_design/presets/design_dwt_special_default.yaml"
+    override:
+      output:
+        experiment_name: "design_dwt_special_level_2"
+      vol_model:
+        wavelet: "db4"
+        level: 2
+      experiment:
+        group: "DWT Special"
+        variant: "DWT Level = 2"
+        paper_tag: "design_dwt_special_level_2"
+  - preset: "configs/experiment_design/presets/design_dwt_special_default.yaml"
+    override:
+      output:
+        experiment_name: "design_dwt_special_level_4"
+      vol_model:
+        wavelet: "db4"
+        level: 4
+      experiment:
+        group: "DWT Special"
+        variant: "DWT Level = 4"
+        paper_tag: "design_dwt_special_level_4"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_gamma_1"
+      optimizer:
+        gamma: 1.0
+      experiment:
+        group: "Robustness"
+        variant: "Gamma = 1"
+        paper_tag: "design_robustness_gamma_1"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_gamma_5"
+      optimizer:
+        gamma: 5.0
+      experiment:
+        group: "Robustness"
+        variant: "Gamma = 5"
+        paper_tag: "design_robustness_gamma_5"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_gamma_10"
+      optimizer:
+        gamma: 10.0
+      experiment:
+        group: "Robustness"
+        variant: "Gamma = 10"
+        paper_tag: "design_robustness_gamma_10"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_cost_0bps"
+      optimizer:
+        transaction_cost: 0.0
+      experiment:
+        group: "Robustness"
+        variant: "Cost = 0 bps"
+        paper_tag: "design_robustness_cost_0bps"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_cost_20bps"
+      optimizer:
+        transaction_cost: 0.002
+      experiment:
+        group: "Robustness"
+        variant: "Cost = 20 bps"
+        paper_tag: "design_robustness_cost_20bps"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_cost_50bps"
+      optimizer:
+        transaction_cost: 0.005
+      experiment:
+        group: "Robustness"
+        variant: "Cost = 50 bps"
+        paper_tag: "design_robustness_cost_50bps"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_window_120_40_20"
+      data:
+        history_window: 160
+        train_window: 120
+        valid_window: 40
+        test_horizon: 20
+        rebalance_freq: 20
+      split:
+        history_window: 160
+        train_window: 120
+        valid_window: 40
+        test_horizon: 20
+        rebalance_freq: 20
+      targets:
+        horizon: 20
+      vol_model:
+        target_horizon: 20
+      experiment:
+        group: "Robustness"
+        variant: "Window = 120/40/20"
+        paper_tag: "design_robustness_window_120_40_20"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_window_180_60_20"
+      data:
+        history_window: 240
+        train_window: 180
+        valid_window: 60
+        test_horizon: 20
+        rebalance_freq: 20
+      split:
+        history_window: 240
+        train_window: 180
+        valid_window: 60
+        test_horizon: 20
+        rebalance_freq: 20
+      targets:
+        horizon: 20
+      vol_model:
+        target_horizon: 20
+      experiment:
+        group: "Robustness"
+        variant: "Window = 180/60/20"
+        paper_tag: "design_robustness_window_180_60_20"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_horizon_5"
+      data:
+        history_window: 140
+        train_window: 120
+        valid_window: 20
+        test_horizon: 5
+        rebalance_freq: 5
+      split:
+        history_window: 140
+        train_window: 120
+        valid_window: 20
+        test_horizon: 5
+        rebalance_freq: 5
+      targets:
+        horizon: 5
+      vol_model:
+        target_horizon: 5
+      experiment:
+        group: "Robustness"
+        variant: "Horizon = 5"
+        paper_tag: "design_robustness_horizon_5"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_horizon_60"
+      data:
+        history_window: 300
+        train_window: 180
+        valid_window: 120
+        test_horizon: 60
+        rebalance_freq: 60
+      split:
+        history_window: 300
+        train_window: 180
+        valid_window: 120
+        test_horizon: 60
+        rebalance_freq: 60
+      targets:
+        horizon: 60
+      mean_model:
+        seq_len: 100
+      vol_model:
+        seq_len: 100
+        target_horizon: 60
+      experiment:
+        group: "Robustness"
+        variant: "Horizon = 60"
+        paper_tag: "design_robustness_horizon_60"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_seq_len_40"
+      mean_model:
+        seq_len: 40
+      vol_model:
+        seq_len: 40
+      experiment:
+        group: "Robustness"
+        variant: "SeqLen = 40"
+        paper_tag: "design_robustness_seq_len_40"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_seq_len_100"
+      mean_model:
+        seq_len: 100
+      vol_model:
+        seq_len: 100
+      experiment:
+        group: "Robustness"
+        variant: "SeqLen = 100"
+        paper_tag: "design_robustness_seq_len_100"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_rebalance_5"
+      data:
+        rebalance_freq: 5
+      split:
+        rebalance_freq: 5
+      experiment:
+        group: "Robustness"
+        variant: "Rebalance = 5"
+        paper_tag: "design_robustness_rebalance_5"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_rebalance_10"
+      data:
+        rebalance_freq: 10
+      split:
+        rebalance_freq: 10
+      experiment:
+        group: "Robustness"
+        variant: "Rebalance = 10"
+        paper_tag: "design_robustness_rebalance_10"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_seed_123"
+      seed: 123
+      mean_model:
+        random_state: 123
+      vol_model:
+        random_state: 123
+      experiment:
+        group: "Robustness"
+        variant: "Seed = 123"
+        paper_tag: "design_robustness_seed_123"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_robustness_seed_2024"
+      seed: 2024
+      mean_model:
+        random_state: 2024
+      vol_model:
+        random_state: 2024
+      experiment:
+        group: "Robustness"
+        variant: "Seed = 2024"
+        paper_tag: "design_robustness_seed_2024"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "design_generalization_pool30"
+      experiment:
+        group: "Generalization"
+        variant: "Pool30"
+        paper_tag: "design_generalization_pool30"
+  - preset: "configs/experiment_design/presets/design_generalization_pool50.yaml"
+  - preset: "configs/experiment_design/presets/design_generalization_pool100.yaml"
+  - preset: "configs/experiment_design/presets/design_generalization_market2.yaml"
+  - preset: "configs/experiment_design/presets/design_generalization_subperiod_1.yaml"
+  - preset: "configs/experiment_design/presets/design_generalization_subperiod_2.yaml"

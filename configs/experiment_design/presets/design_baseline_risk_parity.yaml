@@ -1,0 +1,28 @@
+preset_name: "design_baseline_risk_parity"
+description: "Baseline group: Risk Parity"
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1.0e-8
+
+optimizer:
+  name: "risk_parity"
+  l2_reg: 1.0e-6
+
+output:
+  experiment_name: "design_baseline_risk_parity"
+
+experiment:
+  group: "Baseline Group"
+  variant: "Risk Parity"
+  paper_tag: "design_baseline_risk_parity"

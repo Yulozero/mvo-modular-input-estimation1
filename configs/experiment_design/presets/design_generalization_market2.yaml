@@ -1,0 +1,16 @@
+preset_name: "design_generalization_market2"
+description: "Generalization: second market"
+
+data:
+  returns_path: "data/processed/market2/pool30/returns.csv"
+  prices_path: "data/processed/market2/pool30/close.csv"
+  market_cap_path: "data/processed/market2/pool30/market_cap.csv"
+
+output:
+  experiment_name: "design_generalization_market2"
+
+experiment:
+  group: "Generalization"
+  variant: "Second Market"
+  paper_tag: "design_generalization_market2"
+

@@ -1,0 +1,11 @@
+preset_name: "design_dwt_special_default"
+description: "DWT special group: default DWT-LSTM route"
+
+output:
+  experiment_name: "design_dwt_special_default"
+
+experiment:
+  group: "DWT Special"
+  variant: "DWT-LSTM (db4, level=3)"
+  paper_tag: "design_dwt_special_default"
+

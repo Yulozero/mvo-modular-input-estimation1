@@ -1,0 +1,27 @@
+preset_name: "design_baseline_min_variance"
+description: "Baseline group: Min Variance"
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1.0e-8
+
+optimizer:
+  name: "min_variance"
+
+output:
+  experiment_name: "design_baseline_min_variance"
+
+experiment:
+  group: "Baseline Group"
+  variant: "Min Variance"
+  paper_tag: "design_baseline_min_variance"

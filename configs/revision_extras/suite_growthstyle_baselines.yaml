@@ -1,0 +1,65 @@
+suite_name: "growthstyle_baselines_suite"
+base: "configs/experiment_design/base_design.yaml"
+output:
+  root_dir: "outputs_revision_extras"
+
+experiments:
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "growthstyle_full_model"
+      data:
+        returns_path: "data/processed_growthstyle/pool30/returns.csv"
+        prices_path: "data/processed_growthstyle/pool30/close.csv"
+        market_cap_path: "data/processed_growthstyle/pool30/market_cap.csv"
+      experiment:
+        group: "Growth-style baselines"
+        variant: "Growth-style Full Model"
+
+  - preset: "configs/experiment_design/presets/design_baseline_risk_parity.yaml"
+    override:
+      output:
+        experiment_name: "growthstyle_risk_parity"
+      data:
+        returns_path: "data/processed_growthstyle/pool30/returns.csv"
+        prices_path: "data/processed_growthstyle/pool30/close.csv"
+        market_cap_path: "data/processed_growthstyle/pool30/market_cap.csv"
+      experiment:
+        group: "Growth-style baselines"
+        variant: "Growth-style Risk Parity"
+
+  - preset: "configs/experiment_design/presets/design_baseline_traditional_mvo.yaml"
+    override:
+      output:
+        experiment_name: "growthstyle_traditional_mvo"
+      data:
+        returns_path: "data/processed_growthstyle/pool30/returns.csv"
+        prices_path: "data/processed_growthstyle/pool30/close.csv"
+        market_cap_path: "data/processed_growthstyle/pool30/market_cap.csv"
+      experiment:
+        group: "Growth-style baselines"
+        variant: "Growth-style Traditional MVO"
+
+  - preset: "configs/experiment_design/presets/design_baseline_equal_weight.yaml"
+    override:
+      output:
+        experiment_name: "growthstyle_equal_weight"
+      data:
+        returns_path: "data/processed_growthstyle/pool30/returns.csv"
+        prices_path: "data/processed_growthstyle/pool30/close.csv"
+        market_cap_path: "data/processed_growthstyle/pool30/market_cap.csv"
+      experiment:
+        group: "Growth-style baselines"
+        variant: "Growth-style Equal Weight"
+
+  - preset: "configs/experiment_design/presets/design_baseline_min_variance.yaml"
+    override:
+      output:
+        experiment_name: "growthstyle_min_variance"
+      data:
+        returns_path: "data/processed_growthstyle/pool30/returns.csv"
+        prices_path: "data/processed_growthstyle/pool30/close.csv"
+        market_cap_path: "data/processed_growthstyle/pool30/market_cap.csv"
+      experiment:
+        group: "Growth-style baselines"
+        variant: "Growth-style Min Variance"

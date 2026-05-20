@@ -1,0 +1,14 @@
+preset_name: "design_vol_rolling_std"
+description: "Vol Comparison: Rolling Std with fixed best-mean route and Signed Distance Corr"
+
+vol_model:
+  name: "rolling_std"
+  lookback: 60
+
+output:
+  experiment_name: "design_vol_rolling_std"
+
+experiment:
+  group: "Vol Comparison"
+  variant: "Rolling Std"
+  paper_tag: "design_vol_rolling_std"

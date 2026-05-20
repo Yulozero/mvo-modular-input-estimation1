@@ -1,0 +1,14 @@
+preset_name: "design_corr_pearson"
+description: "Corr Comparison: Pearson correlation with fixed best mean and best vol routes"
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "design_corr_pearson"
+
+experiment:
+  group: "Corr Comparison"
+  variant: "Pearson Corr"
+  paper_tag: "design_corr_pearson"

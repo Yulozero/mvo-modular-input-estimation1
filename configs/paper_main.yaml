@@ -1,0 +1,92 @@
+﻿seed: 42
+
+data:
+  returns_path: "data/processed/pool30/returns.csv"
+  prices_path: "data/processed/pool30/close.csv"
+  market_cap_path: "data/processed/pool30/market_cap.csv"
+  realized_vol_path: null
+  history_window: 160
+  train_window: 120
+  valid_window: 40
+  test_horizon: 20
+  rebalance_freq: 20
+  rv_window: 20
+
+split:
+  history_window: 160
+  train_window: 120
+  valid_window: 40
+  test_horizon: 20
+  rebalance_freq: 20
+  mode: "rolling"
+
+targets:
+  mean_target: "forward_cum_return"
+  vol_target: "forward_realized_vol"
+  horizon: 20
+
+kg:
+  enabled: false
+
+mean_model:
+  name: "attention_mean"
+  seq_len: 60
+  hidden_size: 32
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  random_state: 42
+
+vol_model:
+  name: "dwt_lstm"
+  seq_len: 60
+  hidden_size: 32
+  num_layers: 1
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  wavelet: "db4"
+  level: 3
+  dwt_mode: "symmetric"
+  target_horizon: 20
+  random_state: 42
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1.0e-8
+
+optimizer:
+  name: "mean_variance"
+  gamma: 3.0
+  long_only: true
+  l2_reg: 0.001
+  turnover_penalty: 0.0
+  weight_cap: 0.20
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+backtest:
+  mode: "rolling"
+
+evaluation:
+  periods_per_year: 12
+  daily_periods_per_year: 252
+
+output:
+  root_dir: "outputs_paper_full_matrix"
+  experiment_name: "paper_full_model"
+
+experiment:
+  group: "Main"
+  variant: "Full Model"
+  paper_tag: "paper_main_full"
+  metadata:
+    stage: "paper"
+    protocol: "strict_no_future_leakage"
+    best_mean_name: "attention_mean"
+    best_vol_name: "dwt_lstm"
+    best_corr_name: "pearson"

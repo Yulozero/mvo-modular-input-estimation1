@@ -1,0 +1,39 @@
+suite_name: "revision_initialdate_baselines"
+base: "configs/experiment_design/base_design.yaml"
+output:
+  root_dir: "outputs_revision_extras"
+
+experiments:
+  - preset: "configs/experiment_design/presets/design_baseline_equal_weight.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_equal_weight"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Initial-date universe Equal Weight"
+  - preset: "configs/experiment_design/presets/design_baseline_min_variance.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_min_variance"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Initial-date universe Minimum Variance"
+  - preset: "configs/experiment_design/presets/design_baseline_shrinkage_mvo.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_shrinkage_mvo"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Initial-date universe Shrinkage MVO"

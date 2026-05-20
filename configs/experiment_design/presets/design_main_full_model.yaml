@@ -1,0 +1,10 @@
+preset_name: "design_main_full_model"
+description: "Design-first main result: Attention Mean + DWT-LSTM Vol + Signed Distance Corr + Mean-Variance"
+
+output:
+  experiment_name: "design_main_full_model"
+
+experiment:
+  group: "Main Result"
+  variant: "Full Model"
+  paper_tag: "design_main_full_model"

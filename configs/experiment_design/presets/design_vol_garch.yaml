@@ -1,0 +1,20 @@
+preset_name: "design_vol_garch"
+description: "Vol Comparison: GARCH with fixed best-mean route and Signed Distance Corr"
+
+vol_model:
+  name: "garch"
+  p: 1
+  q: 1
+  mean: "Zero"
+  vol: "GARCH"
+  dist: "normal"
+  rescale_returns: 100.0
+  target_horizon: 20
+
+output:
+  experiment_name: "design_vol_garch"
+
+experiment:
+  group: "Vol Comparison"
+  variant: "GARCH"
+  paper_tag: "design_vol_garch"

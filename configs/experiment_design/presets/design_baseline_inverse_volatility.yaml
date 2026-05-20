@@ -1,0 +1,27 @@
+preset_name: "design_baseline_inverse_volatility"
+description: "Baseline group: Inverse Volatility"
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1.0e-8
+
+optimizer:
+  name: "inverse_volatility"
+
+output:
+  experiment_name: "design_baseline_inverse_volatility"
+
+experiment:
+  group: "Baseline Group"
+  variant: "Inverse Volatility"
+  paper_tag: "design_baseline_inverse_volatility"

@@ -1,0 +1,24 @@
+preset_name: "design_ablation_nonlinear_corr_only"
+description: "Ablation: best corr only (Signed Distance Corr)"
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "signed_distance_corr"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "design_ablation_nonlinear_corr_only"
+
+experiment:
+  group: "Ablation"
+  variant: "Best Corr Only"
+  paper_tag: "design_ablation_nonlinear_corr_only"

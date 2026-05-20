@@ -1,0 +1,14 @@
+preset_name: "design_corr_signed_distance_corr"
+description: "Corr Comparison: Signed distance correlation with fixed best mean and best vol routes"
+
+corr_model:
+  name: "signed_distance_corr"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "design_corr_signed_distance_corr"
+
+experiment:
+  group: "Corr Comparison"
+  variant: "Signed Distance Corr"
+  paper_tag: "design_corr_signed_distance_corr"

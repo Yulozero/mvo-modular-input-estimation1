@@ -1,0 +1,80 @@
+suite_name: "transformer_mean_tuning_suite"
+base: "configs/base.yaml"
+
+experiments:
+  - preset: "configs/presets/fusion_no_kg_mean_transformer.yaml"
+    override:
+      output:
+        experiment_name: "mean_transformer_tune_baseline"
+      experiment:
+        variant: "Transformer Tune Baseline"
+        paper_tag: "mean_transformer_tune_baseline"
+
+  - preset: "configs/presets/fusion_no_kg_mean_transformer.yaml"
+    override:
+      mean_model:
+        d_model: 32
+        n_heads: 4
+        n_layers: 1
+        dropout: 0.05
+        weight_decay: 0.0
+        lr: 0.0015
+        epochs: 60
+        early_stopping_patience: 12
+      output:
+        experiment_name: "mean_transformer_tune_small_lowreg"
+      experiment:
+        variant: "Transformer Small LowReg"
+        paper_tag: "mean_transformer_tune_small_lowreg"
+
+  - preset: "configs/presets/fusion_no_kg_mean_transformer.yaml"
+    override:
+      mean_model:
+        d_model: 64
+        n_heads: 4
+        n_layers: 2
+        dropout: 0.02
+        weight_decay: 0.0
+        lr: 0.001
+        epochs: 70
+        early_stopping_patience: 14
+      output:
+        experiment_name: "mean_transformer_tune_lowreg"
+      experiment:
+        variant: "Transformer LowReg"
+        paper_tag: "mean_transformer_tune_lowreg"
+
+  - preset: "configs/presets/fusion_no_kg_mean_transformer.yaml"
+    override:
+      mean_model:
+        d_model: 64
+        n_heads: 4
+        n_layers: 2
+        dropout: 0.05
+        weight_decay: 0.00005
+        lr: 0.0007
+        epochs: 90
+        early_stopping_patience: 18
+      output:
+        experiment_name: "mean_transformer_tune_slowstable"
+      experiment:
+        variant: "Transformer SlowStable"
+        paper_tag: "mean_transformer_tune_slowstable"
+
+  - preset: "configs/presets/fusion_no_kg_mean_transformer.yaml"
+    override:
+      mean_model:
+        d_model: 64
+        n_heads: 4
+        n_layers: 2
+        dropout: 0.08
+        weight_decay: 0.0001
+        lr: 0.001
+        use_huber_loss: true
+        epochs: 80
+        early_stopping_patience: 14
+      output:
+        experiment_name: "mean_transformer_tune_huber"
+      experiment:
+        variant: "Transformer Huber"
+        paper_tag: "mean_transformer_tune_huber"

@@ -1,0 +1,40 @@
+preset_name: "fusion_no_kg_baseline_risk_parity"
+description: "Baseline：Risk Parity"
+
+split:
+  train_window: 120
+  valid_window: 40
+  test_horizon: 20
+  rebalance_freq: 20
+
+targets:
+  horizon: 20
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1e-8
+
+optimizer:
+  name: "risk_parity"
+  long_only: true
+  l2_reg: 1e-6
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+output:
+  experiment_name: "baseline_risk_parity"
+
+experiment:
+  group: "Baseline"
+  variant: "Risk Parity"
+  paper_tag: "baseline_risk_parity"

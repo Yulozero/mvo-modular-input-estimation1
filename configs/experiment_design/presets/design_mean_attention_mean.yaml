@@ -1,0 +1,20 @@
+preset_name: "design_mean_attention_mean"
+description: "Mean Comparison: Attention Mean with fixed EWMA vol and Pearson corr"
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "design_mean_attention_mean"
+
+experiment:
+  group: "Mean Comparison"
+  variant: "Attention Mean"
+  paper_tag: "design_mean_attention_mean"

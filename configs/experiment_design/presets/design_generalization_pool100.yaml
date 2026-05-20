@@ -1,0 +1,16 @@
+preset_name: "design_generalization_pool100"
+description: "Generalization: pool100"
+
+data:
+  returns_path: "data/processed/pool100/returns.csv"
+  prices_path: "data/processed/pool100/close.csv"
+  market_cap_path: "data/processed/pool100/market_cap.csv"
+
+output:
+  experiment_name: "design_generalization_pool100"
+
+experiment:
+  group: "Generalization"
+  variant: "Pool100"
+  paper_tag: "design_generalization_pool100"
+

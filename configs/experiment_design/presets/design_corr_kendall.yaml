@@ -1,0 +1,15 @@
+preset_name: "design_corr_kendall"
+description: "Corr Comparison: Kendall correlation with fixed best mean and best vol routes"
+
+corr_model:
+  name: "kendall"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "design_corr_kendall"
+
+experiment:
+  group: "Corr Comparison"
+  variant: "Kendall Corr"
+  paper_tag: "design_corr_kendall"
+

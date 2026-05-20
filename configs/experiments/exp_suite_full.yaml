@@ -1,0 +1,89 @@
+suite_name: "fusion_no_kg_full_suite"
+base: "configs/base.yaml"
+
+experiments:
+  # Main
+  - preset: "configs/presets/fusion_no_kg_default.yaml"
+
+  # Baselines
+  - preset: "configs/presets/fusion_no_kg_baseline_ew.yaml"
+  - preset: "configs/presets/fusion_no_kg_baseline_minvar.yaml"
+  - preset: "configs/presets/fusion_no_kg_baseline_inverse_vol.yaml"
+  - preset: "configs/presets/fusion_no_kg_baseline_risk_parity.yaml"
+  - preset: "configs/presets/fusion_no_kg_baseline_shrinkage_mvo.yaml"
+  - preset: "configs/presets/fusion_no_kg_baseline_traditional_mvo.yaml"
+
+  # Mean
+  - preset: "configs/presets/fusion_no_kg_mean_hist.yaml"
+  - preset: "configs/presets/fusion_no_kg_mean_ewma.yaml"
+  - preset: "configs/presets/fusion_no_kg_mean_lstm.yaml"
+  - preset: "configs/presets/fusion_no_kg_mean_attention.yaml"
+  - preset: "configs/presets/fusion_no_kg_mean_transformer.yaml"
+
+  # Vol
+  - preset: "configs/presets/fusion_no_kg_vol_rolling.yaml"
+  - preset: "configs/presets/fusion_no_kg_vol_ewma.yaml"
+  - preset: "configs/presets/fusion_no_kg_vol_garch.yaml"
+  - preset: "configs/presets/fusion_no_kg_vol_garch_lstm.yaml"
+  - preset: "configs/presets/fusion_no_kg_vol_filter_lstm.yaml"
+  - preset: "configs/presets/fusion_no_kg_vol_dwt_lstm.yaml"
+
+
+  # Corr
+  - preset: "configs/presets/fusion_no_kg_corr_pearson.yaml"
+  - preset: "configs/presets/fusion_no_kg_corr_spearman.yaml"
+  - preset: "configs/presets/fusion_no_kg_corr_kendall.yaml"
+  - preset: "configs/presets/fusion_no_kg_corr_distance.yaml"
+
+  # Ablation
+  - preset: "configs/presets/fusion_no_kg_ablation_baseline.yaml"
+  - preset: "configs/presets/fusion_no_kg_ablation_best_mean_only.yaml"
+  - preset: "configs/presets/fusion_no_kg_ablation_best_vol_only.yaml"
+  - preset: "configs/presets/fusion_no_kg_ablation_nonlinear_corr_only.yaml"
+  - preset: "configs/presets/fusion_no_kg_ablation_full.yaml"
+
+  # Robustness gamma
+  - preset: "configs/presets/fusion_no_kg_robust_gamma_1.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_gamma_3.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_gamma_5.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_gamma_10.yaml"
+
+  # Robustness cost
+  - preset: "configs/presets/fusion_no_kg_robust_cost_0.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_cost_10bps.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_cost_20bps.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_cost_50bps.yaml"
+
+  # Robustness history
+  - preset: "configs/presets/fusion_no_kg_robust_window_120.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_window_240.yaml"
+
+  # Robustness horizon
+  - preset: "configs/presets/fusion_no_kg_robust_horizon_5.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_horizon_60.yaml"
+
+  # Robustness sequence length
+  - preset: "configs/presets/fusion_no_kg_robust_seq_len_40.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_seq_len_100.yaml"
+
+  # Robustness rebalance frequency
+  - preset: "configs/presets/fusion_no_kg_robust_rebalance_5.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_rebalance_10.yaml"
+
+  # Robustness DWT configuration
+  - preset: "configs/presets/fusion_no_kg_robust_wavelet_haar.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_wavelet_sym4.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_dwt_level_2.yaml"
+  - preset: "configs/presets/fusion_no_kg_robust_dwt_level_4.yaml"
+
+  # Robustness seed
+  - preset: "configs/presets/fusion_no_kg_seed_42.yaml"
+  - preset: "configs/presets/fusion_no_kg_seed_123.yaml"
+  - preset: "configs/presets/fusion_no_kg_seed_2024.yaml"
+
+  # Generalization
+  - preset: "configs/presets/fusion_no_kg_general_pool50.yaml"
+  - preset: "configs/presets/fusion_no_kg_general_pool100.yaml"
+  - preset: "configs/presets/fusion_no_kg_general_market2.yaml"
+  - preset: "configs/presets/fusion_no_kg_general_subperiod_1.yaml"
+  - preset: "configs/presets/fusion_no_kg_general_subperiod_2.yaml"

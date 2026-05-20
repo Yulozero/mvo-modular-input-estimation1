@@ -1,0 +1,17 @@
+suite_name: "revision_smoke_pool50_eq"
+base: "configs/experiment_design/base_design.yaml"
+output:
+  root_dir: "outputs_revision_extras"
+
+experiments:
+  - preset: "configs/experiment_design/presets/design_baseline_equal_weight.yaml"
+    override:
+      output:
+        experiment_name: "pool50_equal_weight_test"
+      data:
+        returns_path: "data/processed/pool50/returns.csv"
+        prices_path: "data/processed/pool50/close.csv"
+        market_cap_path: "data/processed/pool50/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool50 Equal Weight Test"

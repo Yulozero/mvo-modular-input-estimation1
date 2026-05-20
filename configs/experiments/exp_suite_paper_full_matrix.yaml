@@ -1,0 +1,152 @@
+suite_name: paper_full_matrix
+base: configs/paper_main.yaml
+output:
+  root_dir: outputs_paper_full_matrix
+experiments:
+- preset: configs/presets/fusion_no_kg_default.yaml
+- preset: configs/presets/fusion_no_kg_baseline_ew.yaml
+- preset: configs/presets/fusion_no_kg_baseline_inverse_vol.yaml
+- preset: configs/presets/fusion_no_kg_baseline_risk_parity.yaml
+- preset: configs/presets/fusion_no_kg_baseline_minvar.yaml
+- preset: configs/presets/fusion_no_kg_baseline_traditional_mvo.yaml
+- preset: configs/presets/fusion_no_kg_baseline_shrinkage_mvo.yaml
+- preset: configs/presets/fusion_no_kg_mean_hist.yaml
+- preset: configs/presets/fusion_no_kg_mean_ewma.yaml
+- preset: configs/presets/fusion_no_kg_mean_lstm.yaml
+- preset: configs/presets/fusion_no_kg_mean_attention.yaml
+- preset: configs/presets/fusion_no_kg_mean_transformer.yaml
+- preset: configs/presets/fusion_no_kg_vol_rolling.yaml
+- preset: configs/presets/fusion_no_kg_vol_ewma.yaml
+- preset: configs/presets/fusion_no_kg_vol_garch.yaml
+- preset: configs/presets/fusion_no_kg_vol_garch_lstm.yaml
+- preset: configs/presets/fusion_no_kg_vol_filter_lstm.yaml
+- preset: configs/presets/fusion_no_kg_vol_dwt_lstm.yaml
+- preset: configs/presets/fusion_no_kg_corr_pearson.yaml
+- preset: configs/presets/fusion_no_kg_corr_spearman.yaml
+- preset: configs/presets/fusion_no_kg_corr_kendall.yaml
+- preset: configs/presets/fusion_no_kg_corr_distance.yaml
+- preset: configs/presets/fusion_no_kg_ablation_baseline.yaml
+- preset: configs/presets/fusion_no_kg_ablation_best_mean_only.yaml
+- preset: configs/presets/fusion_no_kg_ablation_best_vol_only.yaml
+- preset: configs/presets/fusion_no_kg_ablation_nonlinear_corr_only.yaml
+- preset: configs/presets/fusion_no_kg_ablation_full.yaml
+- preset: configs/presets/fusion_no_kg_robust_gamma_1.yaml
+- preset: configs/presets/fusion_no_kg_robust_gamma_3.yaml
+- preset: configs/presets/fusion_no_kg_robust_gamma_5.yaml
+- preset: configs/presets/fusion_no_kg_robust_gamma_10.yaml
+- preset: configs/presets/fusion_no_kg_robust_cost_0.yaml
+- preset: configs/presets/fusion_no_kg_robust_cost_10bps.yaml
+- preset: configs/presets/fusion_no_kg_robust_cost_20bps.yaml
+- preset: configs/presets/fusion_no_kg_robust_cost_50bps.yaml
+- preset: configs/presets/fusion_no_kg_default.yaml
+  override:
+    output:
+      experiment_name: paper_robust_window_120_40_20
+    experiment:
+      group: Robustness
+      variant: Window=120_40_20
+      paper_tag: robust_window_120_40_20
+- preset: configs/presets/fusion_no_kg_default.yaml
+  override:
+    output:
+      experiment_name: paper_robust_window_180_60_20
+    data:
+      history_window: 240
+      train_window: 180
+      valid_window: 60
+      test_horizon: 20
+      rebalance_freq: 20
+    split:
+      history_window: 240
+      train_window: 180
+      valid_window: 60
+      test_horizon: 20
+      rebalance_freq: 20
+    targets:
+      horizon: 20
+    vol_model:
+      target_horizon: 20
+    experiment:
+      group: Robustness
+      variant: Window=180_60_20
+      paper_tag: robust_window_180_60_20
+- preset: configs/presets/fusion_no_kg_robust_horizon_5.yaml
+- preset: configs/presets/fusion_no_kg_default.yaml
+  override:
+    output:
+      experiment_name: paper_robust_horizon_20
+    experiment:
+      group: Robustness
+      variant: Horizon=20
+      paper_tag: robust_horizon_20
+- preset: configs/presets/fusion_no_kg_robust_horizon_60.yaml
+- preset: configs/presets/fusion_no_kg_robust_seq_len_40.yaml
+- preset: configs/presets/fusion_no_kg_default.yaml
+  override:
+    output:
+      experiment_name: paper_robust_seq_len_60
+    experiment:
+      group: Robustness
+      variant: SeqLen=60
+      paper_tag: robust_seq_len_60
+- preset: configs/presets/fusion_no_kg_robust_seq_len_100.yaml
+- preset: configs/presets/fusion_no_kg_robust_rebalance_5.yaml
+- preset: configs/presets/fusion_no_kg_robust_rebalance_10.yaml
+- preset: configs/presets/fusion_no_kg_default.yaml
+  override:
+    output:
+      experiment_name: paper_robust_rebalance_20
+    experiment:
+      group: Robustness
+      variant: Rebalance=20
+      paper_tag: robust_rebalance_20
+- preset: configs/presets/fusion_no_kg_default.yaml
+  override:
+    output:
+      experiment_name: paper_robust_wavelet_default
+    vol_model:
+      name: dwt_lstm
+      wavelet: db4
+      level: 3
+      target_horizon: 20
+    experiment:
+      group: Robustness
+      variant: Wavelet=db4
+      paper_tag: robust_wavelet_db4
+- preset: configs/presets/fusion_no_kg_robust_wavelet_haar.yaml
+- preset: configs/presets/fusion_no_kg_robust_wavelet_sym4.yaml
+- preset: configs/presets/fusion_no_kg_robust_dwt_level_2.yaml
+- preset: configs/presets/fusion_no_kg_default.yaml
+  override:
+    output:
+      experiment_name: paper_robust_dwt_level_3
+    vol_model:
+      name: dwt_lstm
+      wavelet: db4
+      level: 3
+      target_horizon: 20
+    experiment:
+      group: Robustness
+      variant: DWTLevel=3
+      paper_tag: robust_dwt_level_3
+- preset: configs/presets/fusion_no_kg_robust_dwt_level_4.yaml
+- preset: configs/presets/fusion_no_kg_seed_42.yaml
+- preset: configs/presets/fusion_no_kg_seed_123.yaml
+- preset: configs/presets/fusion_no_kg_seed_2024.yaml
+- preset: configs/presets/fusion_no_kg_default.yaml
+  override:
+    output:
+      experiment_name: paper_general_pool30
+    data:
+      returns_path: data/processed/pool30/returns.csv
+      prices_path: data/processed/pool30/close.csv
+      market_cap_path: data/processed/pool30/market_cap.csv
+    experiment:
+      group: Generalization
+      variant: Pool30
+      paper_tag: general_pool30
+- preset: configs/presets/fusion_no_kg_general_pool50.yaml
+- preset: configs/presets/fusion_no_kg_general_pool100.yaml
+- preset: configs/presets/fusion_no_kg_general_market2.yaml
+- preset: configs/presets/fusion_no_kg_general_subperiod_1.yaml
+- preset: configs/presets/fusion_no_kg_general_subperiod_2.yaml

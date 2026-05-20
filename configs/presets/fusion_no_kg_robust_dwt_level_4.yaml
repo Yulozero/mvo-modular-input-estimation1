@@ -1,0 +1,54 @@
+preset_name: "fusion_no_kg_robust_dwt_level_4"
+description: "DWT-LSTM robustness: decomposition level = 4"
+
+mean_model:
+  name: "transformer_mean"
+  seq_len: 60
+  d_model: 64
+  n_heads: 4
+  n_layers: 2
+  epochs: 40
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  weight_decay: 0.0001
+  grad_clip_norm: 1.0
+  early_stopping_patience: 7
+  use_huber_loss: false
+  random_state: 42
+
+vol_model:
+  name: "dwt_lstm"
+  seq_len: 60
+  hidden_size: 32
+  num_layers: 1
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  wavelet: "db4"
+  level: 4
+  dwt_mode: "symmetric"
+  target_horizon: 20
+  random_state: 42
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1e-8
+
+optimizer:
+  name: "mean_variance"
+  gamma: 3.0
+  long_only: true
+  l2_reg: 0.001
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+output:
+  experiment_name: "robust_dwt_level_4"
+
+experiment:
+  group: "Robustness"
+  variant: "DWTLevel=4"
+  paper_tag: "robust_dwt_level_4"

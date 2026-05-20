@@ -1,0 +1,50 @@
+preset_name: "fusion_no_kg_mean_asset_conditioned_cap20"
+description: "Mean Comparison: Asset-Conditioned Attention Mean with 20% weight cap"
+
+split:
+  train_window: 120
+  valid_window: 40
+  test_horizon: 20
+  rebalance_freq: 20
+
+targets:
+  horizon: 20
+
+mean_model:
+  name: "asset_conditioned_attention_mean"
+  seq_len: 60
+  hidden_size: 32
+  asset_emb_dim: 8
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  random_state: 42
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1e-8
+
+optimizer:
+  name: "mean_variance"
+  gamma: 3.0
+  long_only: true
+  l2_reg: 0.001
+  weight_cap: 0.20
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+output:
+  experiment_name: "mean_asset_conditioned_cap20"
+
+experiment:
+  group: "Mean Comparison"
+  variant: "Asset-Conditioned Attention Mean (Cap 20%)"
+  paper_tag: "mean_asset_conditioned_cap20"

@@ -1,0 +1,38 @@
+preset_name: "fusion_no_kg_baseline_ew"
+description: "Baseline：Equal Weight"
+
+split:
+  train_window: 120
+  valid_window: 40
+  test_horizon: 20
+  rebalance_freq: 20
+
+targets:
+  horizon: 20
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1e-8
+
+optimizer:
+  name: "equal_weight"
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+output:
+  experiment_name: "baseline_equal_weight"
+
+experiment:
+  group: "Baseline"
+  variant: "Equal Weight"
+  paper_tag: "baseline_equal_weight"

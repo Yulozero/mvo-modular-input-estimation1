@@ -1,0 +1,15 @@
+preset_name: "design_corr_spearman"
+description: "Corr Comparison: Spearman correlation with fixed best mean and best vol routes"
+
+corr_model:
+  name: "spearman"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "design_corr_spearman"
+
+experiment:
+  group: "Corr Comparison"
+  variant: "Spearman Corr"
+  paper_tag: "design_corr_spearman"
+

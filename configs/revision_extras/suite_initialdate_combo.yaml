@@ -1,0 +1,86 @@
+suite_name: "initialdate_combo_suite"
+base: "configs/experiment_design/base_design.yaml"
+output:
+  root_dir: "outputs_revision_extras"
+
+experiments:
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_pearson_cap10"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      corr_model:
+        name: "pearson"
+        psd_eps: 1.0e-8
+      optimizer:
+        weight_cap: 0.10
+      experiment:
+        group: "Initial-date tuning"
+        variant: "Initial-date Pearson + cap10"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_pearson_garch_lstm"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      corr_model:
+        name: "pearson"
+        psd_eps: 1.0e-8
+      vol_model:
+        name: "garch_lstm"
+        seq_len: 60
+        hidden_size: 32
+        num_layers: 1
+        epochs: 30
+        batch_size: 64
+        lr: 0.001
+        dropout: 0.1
+        early_stopping_patience: 5
+        garch_p: 1
+        garch_q: 1
+        rescale_returns: 100.0
+        min_history: 60
+        target_horizon: 20
+        random_state: 42
+      experiment:
+        group: "Initial-date tuning"
+        variant: "Initial-date Pearson + GARCH-LSTM"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_pearson_garch_cap10"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      corr_model:
+        name: "pearson"
+        psd_eps: 1.0e-8
+      vol_model:
+        name: "garch_lstm"
+        seq_len: 60
+        hidden_size: 32
+        num_layers: 1
+        epochs: 30
+        batch_size: 64
+        lr: 0.001
+        dropout: 0.1
+        early_stopping_patience: 5
+        garch_p: 1
+        garch_q: 1
+        rescale_returns: 100.0
+        min_history: 60
+        target_horizon: 20
+        random_state: 42
+      optimizer:
+        weight_cap: 0.10
+      experiment:
+        group: "Initial-date tuning"
+        variant: "Initial-date Pearson + GARCH-LSTM + cap10"

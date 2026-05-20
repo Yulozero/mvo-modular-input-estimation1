@@ -1,0 +1,15 @@
+preset_name: "signed_distance_corr_validation"
+description: "Validation run for signed distance correlation"
+
+corr_model:
+  name: "signed_distance_corr"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "signed_distance_corr_validation"
+
+experiment:
+  group: "Nonlinear Validation"
+  variant: "Signed Distance Corr"
+  paper_tag: "signed_distance_corr_validation"
+

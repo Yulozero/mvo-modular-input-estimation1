@@ -1,0 +1,27 @@
+preset_name: "design_vol_garch_lstm"
+description: "Vol Comparison: GARCH-LSTM with fixed best-mean route and Signed Distance Corr"
+
+vol_model:
+  name: "garch_lstm"
+  seq_len: 60
+  hidden_size: 32
+  num_layers: 1
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  garch_p: 1
+  garch_q: 1
+  rescale_returns: 100.0
+  min_history: 60
+  target_horizon: 20
+  random_state: 42
+
+output:
+  experiment_name: "design_vol_garch_lstm"
+
+experiment:
+  group: "Vol Comparison"
+  variant: "GARCH-LSTM"
+  paper_tag: "design_vol_garch_lstm"

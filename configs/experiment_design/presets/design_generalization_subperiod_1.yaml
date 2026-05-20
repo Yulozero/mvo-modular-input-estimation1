@@ -1,0 +1,15 @@
+preset_name: "design_generalization_subperiod_1"
+description: "Generalization: subperiod 1"
+
+data:
+  start_date: "2019-01-01"
+  end_date: "2021-12-31"
+
+output:
+  experiment_name: "design_generalization_subperiod_1"
+
+experiment:
+  group: "Generalization"
+  variant: "Subperiod 1"
+  paper_tag: "design_generalization_subperiod_1"
+

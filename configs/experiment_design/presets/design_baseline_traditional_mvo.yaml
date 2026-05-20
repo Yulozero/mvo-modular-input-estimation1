@@ -1,0 +1,24 @@
+preset_name: "design_baseline_traditional_mvo"
+description: "Baseline group: Traditional Mean-Variance"
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "design_baseline_traditional_mvo"
+
+experiment:
+  group: "Baseline Group"
+  variant: "Traditional MVO"
+  paper_tag: "design_baseline_traditional_mvo"

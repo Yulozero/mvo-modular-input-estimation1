@@ -1,0 +1,49 @@
+suite_name: "fusion_no_kg_mean_vol_sliding_suite"
+base: "configs/base.yaml"
+
+experiments:
+  - preset: "configs/presets/fusion_no_kg_mean_hist.yaml"
+    override:
+      output:
+        experiment_name: "mean_hist_sliding"
+  - preset: "configs/presets/fusion_no_kg_mean_ewma.yaml"
+    override:
+      output:
+        experiment_name: "mean_ewma_sliding"
+  - preset: "configs/presets/fusion_no_kg_mean_lstm.yaml"
+    override:
+      output:
+        experiment_name: "mean_lstm_sliding"
+  - preset: "configs/presets/fusion_no_kg_mean_attention.yaml"
+    override:
+      output:
+        experiment_name: "mean_attention_sliding"
+  - preset: "configs/presets/fusion_no_kg_mean_transformer.yaml"
+    override:
+      output:
+        experiment_name: "mean_transformer_sliding"
+
+  - preset: "configs/presets/fusion_no_kg_vol_rolling.yaml"
+    override:
+      output:
+        experiment_name: "vol_rolling_sliding"
+  - preset: "configs/presets/fusion_no_kg_vol_ewma.yaml"
+    override:
+      output:
+        experiment_name: "vol_ewma_sliding"
+  - preset: "configs/presets/fusion_no_kg_vol_garch.yaml"
+    override:
+      output:
+        experiment_name: "vol_garch_sliding"
+  - preset: "configs/presets/fusion_no_kg_vol_garch_lstm.yaml"
+    override:
+      output:
+        experiment_name: "vol_garch_lstm_sliding"
+  - preset: "configs/presets/fusion_no_kg_vol_filter_lstm.yaml"
+    override:
+      output:
+        experiment_name: "vol_filter_lstm_sliding"
+  - preset: "configs/presets/fusion_no_kg_vol_dwt_lstm.yaml"
+    override:
+      output:
+        experiment_name: "fusion_no_kg_vol_dwt_lstm_sliding"

@@ -1,0 +1,65 @@
+suite_name: "initialdate_mean_compare_suite"
+base: "configs/experiment_design/base_design.yaml"
+output:
+  root_dir: "outputs_revision_extras"
+
+experiments:
+  - preset: "configs/experiment_design/presets/design_mean_attention_mean.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_mean_attention"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Initial-date mean comparison"
+        variant: "Initial-date Attention Mean"
+
+  - preset: "configs/experiment_design/presets/design_mean_hist_mean.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_mean_hist"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Initial-date mean comparison"
+        variant: "Initial-date Historical Mean"
+
+  - preset: "configs/experiment_design/presets/design_mean_ewma_mean.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_mean_ewma"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Initial-date mean comparison"
+        variant: "Initial-date EWMA Mean"
+
+  - preset: "configs/experiment_design/presets/design_mean_lstm_mean.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_mean_lstm"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Initial-date mean comparison"
+        variant: "Initial-date LSTM Mean"
+
+  - preset: "configs/experiment_design/presets/design_mean_transformer_mean.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_mean_transformer"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Initial-date mean comparison"
+        variant: "Initial-date Transformer Mean"

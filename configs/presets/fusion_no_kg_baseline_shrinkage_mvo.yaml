@@ -1,0 +1,42 @@
+preset_name: "fusion_no_kg_baseline_shrinkage_mvo"
+description: "Baseline：Shrinkage MVO"
+
+split:
+  train_window: 120
+  valid_window: 40
+  test_horizon: 20
+  rebalance_freq: 20
+
+targets:
+  horizon: 20
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1e-8
+
+optimizer:
+  name: "shrinkage_mvo"
+  gamma: 3.0
+  long_only: true
+  l2_reg: 0.001
+  shrink_alpha: 0.2
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+output:
+  experiment_name: "baseline_shrinkage_mvo"
+
+experiment:
+  group: "Baseline"
+  variant: "Shrinkage MVO"
+  paper_tag: "baseline_shrinkage_mvo"

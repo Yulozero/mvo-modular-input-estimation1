@@ -1,0 +1,10 @@
+preset_name: "design_vol_dwt_lstm"
+description: "Vol Comparison: DWT-LSTM with fixed best-mean route and Signed Distance Corr"
+
+output:
+  experiment_name: "design_vol_dwt_lstm"
+
+experiment:
+  group: "Vol Comparison"
+  variant: "DWT-LSTM"
+  paper_tag: "design_vol_dwt_lstm"

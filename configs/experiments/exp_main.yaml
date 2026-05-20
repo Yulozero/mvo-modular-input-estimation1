@@ -1,0 +1,17 @@
+suite_name: "fusion_no_kg_main_suite"
+base: "configs/base.yaml"
+
+experiments:
+  - preset: "configs/presets/fusion_no_kg_default.yaml"
+
+  - preset: "configs/presets/fusion_no_kg_mean_hist.yaml"
+  - preset: "configs/presets/fusion_no_kg_mean_transformer.yaml"
+
+  - preset: "configs/presets/fusion_no_kg_vol_ewma.yaml"
+  - preset: "configs/presets/fusion_no_kg_vol_garch_lstm.yaml"
+
+  - preset: "configs/presets/fusion_no_kg_corr_pearson.yaml"
+  - preset: "configs/presets/fusion_no_kg_corr_distance.yaml"
+
+  - preset: "configs/presets/fusion_no_kg_ablation_baseline.yaml"
+  - preset: "configs/presets/fusion_no_kg_ablation_full.yaml"

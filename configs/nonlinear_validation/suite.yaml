@@ -1,0 +1,8 @@
+suite_name: "nonlinear_validation_suite"
+base: "configs/nonlinear_validation/base.yaml"
+output:
+  root_dir: "outputs_nonlinear_validation"
+
+experiments:
+  - preset: "configs/nonlinear_validation/presets/signed_distance_corr.yaml"
+  - preset: "configs/nonlinear_validation/presets/denoised_signed_distance_corr.yaml"

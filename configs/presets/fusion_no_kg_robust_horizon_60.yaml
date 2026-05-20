@@ -1,0 +1,73 @@
+preset_name: "fusion_no_kg_robust_horizon_60"
+description: "Robustness：Long horizon 60-day protocol"
+
+data:
+  history_window: 300
+  train_window: 180
+  valid_window: 120
+  test_horizon: 60
+  rebalance_freq: 60
+
+split:
+  history_window: 300
+  train_window: 180
+  valid_window: 120
+  test_horizon: 60
+  rebalance_freq: 60
+  mode: "rolling"
+
+targets:
+  horizon: 60
+
+mean_model:
+  name: "transformer_mean"
+  seq_len: 100
+  d_model: 64
+  n_heads: 4
+  n_layers: 2
+  epochs: 40
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  weight_decay: 0.0001
+  grad_clip_norm: 1.0
+  early_stopping_patience: 7
+  use_huber_loss: false
+  random_state: 42
+
+vol_model:
+  name: "garch_lstm"
+  seq_len: 100
+  hidden_size: 32
+  num_layers: 1
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  garch_p: 1
+  garch_q: 1
+  rescale_returns: 100.0
+  min_history: 60
+  target_horizon: 60
+  random_state: 42
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1e-8
+
+optimizer:
+  name: "mean_variance"
+  gamma: 3.0
+  long_only: true
+  l2_reg: 0.001
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+output:
+  experiment_name: "robust_horizon_60"
+
+experiment:
+  group: "Robustness"
+  variant: "Horizon=60"
+  paper_tag: "robust_horizon_60"

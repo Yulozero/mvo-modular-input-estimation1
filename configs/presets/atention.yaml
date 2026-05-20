@@ -1,0 +1,59 @@
+preset_name: "attention_garch_lstm"
+description: "Vol Comparison：GARCH"
+
+split:
+  train_window: 120
+  valid_window: 40
+  test_horizon: 20
+  rebalance_freq: 20
+
+targets:
+  horizon: 20
+
+mean_model:
+  name: "attention_mean"
+  seq_len: 60
+  hidden_size: 32
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  random_state: 42
+
+vol_model:
+  name: "garch_lstm"
+  seq_len: 60
+  hidden_size: 32
+  num_layers: 1
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  garch_p: 1
+  garch_q: 1
+  rescale_returns: 100.0
+  min_history: 60
+  target_horizon: 20
+  random_state: 42
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1e-8
+
+optimizer:
+  name: "mean_variance"
+  gamma: 3.0
+  long_only: true
+  l2_reg: 0.001
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+output:
+  experiment_name: "attention_garch_lstm"
+
+experiment:
+  group: "random"
+  variant: "Garch_lstm"
+  paper_tag: "attention"

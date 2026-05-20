@@ -1,0 +1,64 @@
+preset_name: "fusion_no_kg_vol_garch_lstm"
+description: "Vol Comparison：GARCH-LSTM"
+
+split:
+  train_window: 120
+  valid_window: 40
+  test_horizon: 20
+  rebalance_freq: 20
+
+targets:
+  horizon: 20
+
+mean_model:
+  name: "transformer_mean"
+  seq_len: 60
+  d_model: 64
+  n_heads: 4
+  n_layers: 2
+  epochs: 40
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  weight_decay: 0.0001
+  grad_clip_norm: 1.0
+  early_stopping_patience: 7
+  use_huber_loss: false
+  random_state: 42
+
+vol_model:
+  name: "garch_lstm"
+  seq_len: 60
+  hidden_size: 32
+  num_layers: 1
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  dropout: 0.1
+  early_stopping_patience: 5
+  garch_p: 1
+  garch_q: 1
+  rescale_returns: 100.0
+  min_history: 60
+  target_horizon: 20
+  random_state: 42
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1e-8
+
+optimizer:
+  name: "mean_variance"
+  gamma: 3.0
+  long_only: true
+  l2_reg: 0.001
+  transaction_cost: 0.001
+  charge_initial_cost: true
+
+output:
+  experiment_name: "vol_garch_lstm"
+
+experiment:
+  group: "Vol Comparison"
+  variant: "GARCH-LSTM"
+  paper_tag: "vol_garch_lstm"

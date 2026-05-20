@@ -1,0 +1,216 @@
+suite_name: "revision_extras_suite"
+base: "configs/experiment_design/base_design.yaml"
+output:
+  root_dir: "outputs_revision_extras"
+
+experiments:
+  - preset: "configs/experiment_design/presets/design_baseline_equal_weight.yaml"
+    override:
+      output:
+        experiment_name: "pool50_equal_weight"
+      data:
+        returns_path: "data/processed/pool50/returns.csv"
+        prices_path: "data/processed/pool50/close.csv"
+        market_cap_path: "data/processed/pool50/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool50 Equal Weight"
+  - preset: "configs/experiment_design/presets/design_baseline_min_variance.yaml"
+    override:
+      output:
+        experiment_name: "pool50_min_variance"
+      data:
+        returns_path: "data/processed/pool50/returns.csv"
+        prices_path: "data/processed/pool50/close.csv"
+        market_cap_path: "data/processed/pool50/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool50 Min Variance"
+  - preset: "configs/experiment_design/presets/design_baseline_risk_parity.yaml"
+    override:
+      output:
+        experiment_name: "pool50_risk_parity"
+      data:
+        returns_path: "data/processed/pool50/returns.csv"
+        prices_path: "data/processed/pool50/close.csv"
+        market_cap_path: "data/processed/pool50/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool50 Risk Parity"
+  - preset: "configs/experiment_design/presets/design_baseline_traditional_mvo.yaml"
+    override:
+      output:
+        experiment_name: "pool50_traditional_mvo"
+      data:
+        returns_path: "data/processed/pool50/returns.csv"
+        prices_path: "data/processed/pool50/close.csv"
+        market_cap_path: "data/processed/pool50/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool50 Traditional MVO"
+  - preset: "configs/experiment_design/presets/design_baseline_shrinkage_mvo.yaml"
+    override:
+      output:
+        experiment_name: "pool50_shrinkage_mvo"
+      data:
+        returns_path: "data/processed/pool50/returns.csv"
+        prices_path: "data/processed/pool50/close.csv"
+        market_cap_path: "data/processed/pool50/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool50 Shrinkage MVO"
+
+  - preset: "configs/experiment_design/presets/design_baseline_equal_weight.yaml"
+    override:
+      output:
+        experiment_name: "pool100_equal_weight"
+      data:
+        returns_path: "data/processed/pool100/returns.csv"
+        prices_path: "data/processed/pool100/close.csv"
+        market_cap_path: "data/processed/pool100/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool100 Equal Weight"
+  - preset: "configs/experiment_design/presets/design_baseline_min_variance.yaml"
+    override:
+      output:
+        experiment_name: "pool100_min_variance"
+      data:
+        returns_path: "data/processed/pool100/returns.csv"
+        prices_path: "data/processed/pool100/close.csv"
+        market_cap_path: "data/processed/pool100/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool100 Min Variance"
+  - preset: "configs/experiment_design/presets/design_baseline_risk_parity.yaml"
+    override:
+      output:
+        experiment_name: "pool100_risk_parity"
+      data:
+        returns_path: "data/processed/pool100/returns.csv"
+        prices_path: "data/processed/pool100/close.csv"
+        market_cap_path: "data/processed/pool100/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool100 Risk Parity"
+  - preset: "configs/experiment_design/presets/design_baseline_traditional_mvo.yaml"
+    override:
+      output:
+        experiment_name: "pool100_traditional_mvo"
+      data:
+        returns_path: "data/processed/pool100/returns.csv"
+        prices_path: "data/processed/pool100/close.csv"
+        market_cap_path: "data/processed/pool100/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool100 Traditional MVO"
+  - preset: "configs/experiment_design/presets/design_baseline_shrinkage_mvo.yaml"
+    override:
+      output:
+        experiment_name: "pool100_shrinkage_mvo"
+      data:
+        returns_path: "data/processed/pool100/returns.csv"
+        prices_path: "data/processed/pool100/close.csv"
+        market_cap_path: "data/processed/pool100/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Pool100 Shrinkage MVO"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "weight_cap_10"
+      optimizer:
+        weight_cap: 0.10
+      experiment:
+        group: "Revision Extras"
+        variant: "Weight cap = 10%"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "weight_cap_15"
+      optimizer:
+        weight_cap: 0.15
+      experiment:
+        group: "Revision Extras"
+        variant: "Weight cap = 15%"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "weight_cap_25"
+      optimizer:
+        weight_cap: 0.25
+      experiment:
+        group: "Revision Extras"
+        variant: "Weight cap = 25%"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "weight_cap_30"
+      optimizer:
+        weight_cap: 0.30
+      experiment:
+        group: "Revision Extras"
+        variant: "Weight cap = 30%"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "lambda_0"
+      optimizer:
+        l2_reg: 0.0
+      experiment:
+        group: "Revision Extras"
+        variant: "Lambda = 0"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "lambda_1e4"
+      optimizer:
+        l2_reg: 0.0001
+      experiment:
+        group: "Revision Extras"
+        variant: "Lambda = 1e-4"
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "lambda_1e2"
+      optimizer:
+        l2_reg: 0.01
+      experiment:
+        group: "Revision Extras"
+        variant: "Lambda = 1e-2"
+
+  - preset: "configs/experiment_design/presets/design_main_full_model.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_full_model"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Initial-date universe Full Model"
+  - preset: "configs/experiment_design/presets/design_baseline_traditional_mvo.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_traditional_mvo"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Initial-date universe Traditional MVO"
+  - preset: "configs/experiment_design/presets/design_baseline_risk_parity.yaml"
+    override:
+      output:
+        experiment_name: "initialdate_risk_parity"
+      data:
+        returns_path: "data/processed_initialdate/pool30/returns.csv"
+        prices_path: "data/processed_initialdate/pool30/close.csv"
+        market_cap_path: "data/processed_initialdate/pool30/market_cap.csv"
+      experiment:
+        group: "Revision Extras"
+        variant: "Initial-date universe Risk Parity"

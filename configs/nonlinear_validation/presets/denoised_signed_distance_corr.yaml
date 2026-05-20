@@ -1,0 +1,18 @@
+preset_name: "denoised_signed_distance_corr_validation"
+description: "Validation run for denoised signed distance correlation"
+
+corr_model:
+  name: "denoised_signed_distance_corr"
+  psd_eps: 1.0e-8
+  blend_with_pearson: 0.5
+  shrink_to_identity: 0.1
+  clip_value: 0.95
+
+output:
+  experiment_name: "denoised_signed_distance_corr_validation"
+
+experiment:
+  group: "Nonlinear Validation"
+  variant: "Denoised Signed Distance Corr"
+  paper_tag: "denoised_signed_distance_corr_validation"
+

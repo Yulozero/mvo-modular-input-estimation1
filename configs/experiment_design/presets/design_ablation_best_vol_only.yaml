@@ -1,0 +1,18 @@
+preset_name: "design_ablation_best_vol_only"
+description: "Ablation: best vol only"
+
+mean_model:
+  name: "hist_mean"
+  lookback: 60
+
+corr_model:
+  name: "pearson"
+  psd_eps: 1.0e-8
+
+output:
+  experiment_name: "design_ablation_best_vol_only"
+
+experiment:
+  group: "Ablation"
+  variant: "Best Vol Only"
+  paper_tag: "design_ablation_best_vol_only"

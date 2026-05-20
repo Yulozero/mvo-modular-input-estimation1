@@ -1,0 +1,16 @@
+preset_name: "design_vol_ewma_vol"
+description: "Vol Comparison: EWMA Vol with fixed best-mean route and Signed Distance Corr"
+
+vol_model:
+  name: "ewma_vol"
+  lookback: 60
+  decay: 0.94
+  target_horizon: 20
+
+output:
+  experiment_name: "design_vol_ewma_vol"
+
+experiment:
+  group: "Vol Comparison"
+  variant: "EWMA Vol"
+  paper_tag: "design_vol_ewma_vol"
