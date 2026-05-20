@@ -53,6 +53,7 @@ distance_formula_proof.txt
 *.html
 *.txt
 !README.md
+!requirements.txt
 
 # LaTeX build products
 *.aux
